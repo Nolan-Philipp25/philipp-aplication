@@ -1,11 +1,10 @@
 import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
 import Button from './Button';
-import Container from 'react-bootstrap/Container';
 import { IUser } from '../constant';
 
-function ResponsiveTable(props: { users: IUser[], clickHandler: Function }) {
-    const { users, clickHandler } = props;
+function ResponsiveTable(props: { users: IUser[], clickHandler: Function, modalHandler: Function }) {
+    const { users, clickHandler, modalHandler } = props;
 
     const usersList = users?.map((u) => {
         return <tr>
@@ -23,6 +22,7 @@ function ResponsiveTable(props: { users: IUser[], clickHandler: Function }) {
             <td>{u?.subDepartment?.title}</td>
             <td>{u?.department?.title}</td>
             <td>{u?.division?.title}</td>
+            <td>{<Button onClick={() => modalHandler(u?.id)} variant='dark' content='view' />}</td>
             <td>{<Button onClick={() => clickHandler(u?.id)} variant='dark' content='Click' />}</td>
         </tr>
     })
@@ -45,6 +45,8 @@ function ResponsiveTable(props: { users: IUser[], clickHandler: Function }) {
             <th>Subdepartment</th>
             <th>Department</th>
             <th>Division</th>
+            <th>Manager</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>

@@ -4,7 +4,7 @@ interface IButton {
     variant: string,
     content: string,
     size?: ButtonProps["size"],
-    onClick: any
+    onClick?: any
     style?: any
 }
 
